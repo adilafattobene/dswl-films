@@ -1,0 +1,19 @@
+{
+  "name": "dswl-films",
+  "version": "1.0.0",
+  "description": "REST api example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afattobene/dswl-films.git"
+  },
+  "author": "adila.fattobene",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afattobene/dswl-films/issues"
+  },
+  "homepage": "https://github.com/afattobene/dswl-films#readme"
+}
