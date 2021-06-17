@@ -1,4 +1,5 @@
 const express = require("express");
+const Joi = require("joi");
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -36,6 +37,18 @@ app.get("/api/films/:id", (req, res) => {
 });
 
 app.post("/api/films", (req, res) => {
+  const schema = Joi.object({
+    name: Joi.string().min(3).max(50).alphanum().required(),
+    director: Joi.string().min(2).max(50).alphanum().required(),
+    link: Joi.string().min(3).max(200).required(),
+  });
+
+  const { error, value } = schema.validate(req.body);
+
+  if (error) {
+    return res.status(400).send(error.message);
+  }
+
   const film = {
     id: films.length + 1,
     name: req.body.name,
