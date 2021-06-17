@@ -2,8 +2,9 @@
   "name": "dswl-films",
   "version": "1.0.0",
   "description": "REST api example",
-  "main": "index.js",
+  "main": "./src/api.js",
   "scripts": {
+    "start": "nodemon ./src/api.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
