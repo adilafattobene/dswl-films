@@ -86,3 +86,16 @@ app.put("/api/films/:id", (req, res) => {
 
   return res.status(200).send(films);
 });
+
+app.delete("/api/films/:id", (req, res) => {
+  const film = films.find((film) => film.id === parseInt(req.params.id));
+
+  if (!film) {
+    return res.status(404).send("Filme não existe.");
+  }
+
+  const index = films.indexOf(film);
+  films.splice(index, 1);
+
+  return res.status(200).send(films);
+});
