@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/afattobene/dswl-films/issues"
   },
-  "homepage": "https://github.com/afattobene/dswl-films#readme"
+  "homepage": "https://github.com/afattobene/dswl-films#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
