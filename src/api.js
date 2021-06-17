@@ -64,5 +64,25 @@ const validateFilm = (film) => {
 
   const { error, value } = schema.validate(film);
 
-  return { error, value }
-}
+  return { error, value };
+};
+
+app.put("/api/films/:id", (req, res) => {
+  const film = films.find((film) => film.id === parseInt(req.params.id));
+
+  if (!film) {
+    return res.status(404).send("Filme não existe.");
+  }
+
+  const { error, value } = validateFilm(req.body);
+
+  if (error) {
+    return res.status(400).send(error.message);
+  }
+
+  film.name = req.body.name;
+  film.director = req.body.director;
+  film.link = req.body.link;
+
+  return res.status(200).send(films);
+});
