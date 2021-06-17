@@ -37,13 +37,7 @@ app.get("/api/films/:id", (req, res) => {
 });
 
 app.post("/api/films", (req, res) => {
-  const schema = Joi.object({
-    name: Joi.string().min(3).max(50).alphanum().required(),
-    director: Joi.string().min(2).max(50).alphanum().required(),
-    link: Joi.string().min(3).max(200).required(),
-  });
-
-  const { error, value } = schema.validate(req.body);
+  const { error, value } = validateFilm(req.body);
 
   if (error) {
     return res.status(400).send(error.message);
@@ -60,3 +54,15 @@ app.post("/api/films", (req, res) => {
 
   return res.status(201).send(films);
 });
+
+const validateFilm = (film) => {
+  const schema = Joi.object({
+    name: Joi.string().min(3).max(50).alphanum().required(),
+    director: Joi.string().min(2).max(50).alphanum().required(),
+    link: Joi.string().min(3).max(200).required(),
+  });
+
+  const { error, value } = schema.validate(film);
+
+  return { error, value }
+}
